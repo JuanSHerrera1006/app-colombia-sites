@@ -1,18 +1,21 @@
 import Papa from 'papaparse'
 import csvFile from '../assets/csv/sitios_turisticos.csv'
 
-export async function getSitesInfo(cb) {
-  const papaConfig = {
-    complete: (result) => {
-      cb(null, result.data)
-    },
-    error: (err) => {
-      cb(err, null)
-    },
-    download: true,
-    header: true,
-    delimeter: ',',
-    skipEmptyLines: true,
-  }
-  Papa.parse(csvFile, papaConfig)
+export function getSitesInfo() {
+  return new Promise((resolve, reject) => {
+    const papaConfig = {
+      complete: (result) => {
+        resolve(result.data)
+      },
+      error: (err) => {
+        reject(err)
+      },
+      download: true,
+      header: true,
+      delimiter: ',',
+      skipEmptyLines: true,
+    }
+
+    Papa.parse(csvFile, papaConfig)
+  })
 }

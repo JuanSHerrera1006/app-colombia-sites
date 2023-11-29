@@ -1,10 +1,15 @@
-import { useLoadDatacsv } from './hooks/useLoadDatacsv'
-import './App.css'
+import { Header } from './components/Header/Header'
+import { MapWrapper } from './components/MapWrapper/MapWrapper'
+import { Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  const { data, loadData } = useLoadDatacsv()
-  console.log(data)
-  return <p>Show console</p>
+  return (
+    <Container fluid>
+      <Header />
+      <MapWrapper />
+    </Container>
+  )
 }
 
 export default App
